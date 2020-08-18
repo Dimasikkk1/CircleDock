@@ -1,0 +1,267 @@
+﻿<Window
+    x:Class="CircleDock.Views.SettingsWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:commands="clr-namespace:CircleDock.Commands"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:properties="clr-namespace:CircleDock.Properties"
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
+    xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+    Title="{x:Static properties:Resources.SettingsWindow}"
+    Width="500"
+    Height="300"
+    mc:Ignorable="d">
+
+    <Window.Resources>
+        <commands:HideSettingsWindowCommand x:Key="HideSettingsWindowCommand" />
+        <Thickness x:Key="TabItemPadding">10</Thickness>
+        <Thickness x:Key="TabItemControlMargin">5</Thickness>
+        <system:Double x:Key="TabItemWidth">100</system:Double>
+    </Window.Resources>
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Closed">
+            <i:InvokeCommandAction Command="{StaticResource HideSettingsWindowCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TabControl Grid.Row="0" TabStripPlacement="Left">
+            <TabItem Width="{StaticResource TabItemWidth}" Header="{x:Static properties:Resources.SettingsWindow_TabItem_Window}">
+
+                <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
+
+                    <StackPanel Margin="{StaticResource TabItemPadding}">
+
+                        <CheckBox
+                            Margin="{StaticResource TabItemControlMargin}"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Content="{x:Static properties:Resources.SettingsWindow_Topmost}"
+                            IsChecked="{Binding Window.Topmost, Mode=TwoWay}" />
+
+                        <CheckBox
+                            Margin="{StaticResource TabItemControlMargin}"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Content="{x:Static properties:Resources.SettingsWindow_HideAfterOpen}"
+                            IsChecked="{Binding Window.HideAfterOpen, Mode=TwoWay}" />
+
+                        <ComboBox Margin="{StaticResource TabItemControlMargin}" SelectedItem="{Binding Window.Language, Mode=TwoWay}">
+                            <ComboBox.ItemsSource>
+                                <CompositeCollection>
+                                    <system:String>en-US</system:String>
+                                    <system:String>ru-RU</system:String>
+                                </CompositeCollection>
+                            </ComboBox.ItemsSource>
+                        </ComboBox>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Width="{StaticResource TabItemWidth}" Header="{x:Static properties:Resources.SettingsWindow_TabItem_Dock}">
+
+                <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
+
+                    <StackPanel Margin="{StaticResource TabItemPadding}">
+
+                        <CheckBox
+                            Margin="{StaticResource TabItemControlMargin}"
+                            Content="{x:Static properties:Resources.SettingsWindow_EnableRotation}"
+                            IsChecked="{Binding Dock.EnableRotation}" />
+
+                        <DockPanel Margin="{StaticResource TabItemControlMargin}">
+
+                            <Label Content="{x:Static properties:Resources.SettingsWindow_MinimumRadius}" DockPanel.Dock="Left" />
+
+                            <TextBox
+                                VerticalAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                DockPanel.Dock="Right"
+                                Text="{Binding Dock.MinimumRadius, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                        </DockPanel>
+                        <DockPanel Margin="{StaticResource TabItemControlMargin}">
+
+                            <Label Content="{x:Static properties:Resources.SettingsWindow_IconsPerCircle}" DockPanel.Dock="Left" />
+
+                            <TextBox
+                                VerticalAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                DockPanel.Dock="Right"
+                                Text="{Binding Dock.IconsPerCircle, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                        </DockPanel>
+                        <DockPanel Margin="{StaticResource TabItemControlMargin}">
+
+                            <Label Content="{x:Static properties:Resources.SettingsWindow_CircleInterval}" DockPanel.Dock="Left" />
+
+                            <TextBox
+                                VerticalAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                DockPanel.Dock="Right"
+                                Text="{Binding Dock.CircleInterval, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                        </DockPanel>
+                        <DockPanel Margin="{StaticResource TabItemControlMargin}">
+
+                            <Label Content="{x:Static properties:Resources.SettingsWindow_RotationStep}" DockPanel.Dock="Left" />
+
+                            <TextBox
+                                VerticalAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                DockPanel.Dock="Right"
+                                Text="{Binding Dock.RotationStep, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                        </DockPanel>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Width="{StaticResource TabItemWidth}" Header="{x:Static properties:Resources.SettingsWindow_TabItem_Ring}">
+
+                <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
+
+                    <StackPanel Margin="{StaticResource TabItemPadding}">
+
+                        <DockPanel Margin="{StaticResource TabItemControlMargin}">
+
+                            <Label Content="{x:Static properties:Resources.SettingsWindow_Color}" DockPanel.Dock="Left" />
+
+                            <xctk:ColorPicker DockPanel.Dock="Right" SelectedColor="{Binding Ring.Color, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                        </DockPanel>
+                        <DockPanel Margin="{StaticResource TabItemControlMargin}">
+
+                            <Label Content="{x:Static properties:Resources.SettingsWindow_Diameter}" DockPanel.Dock="Left" />
+
+                            <TextBox
+                                VerticalAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                DockPanel.Dock="Right"
+                                Text="{Binding Ring.Diameter, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                        </DockPanel>
+                        <DockPanel Margin="{StaticResource TabItemControlMargin}">
+
+                            <Label Content="{x:Static properties:Resources.SettingsWindow_Thickness}" DockPanel.Dock="Left" />
+
+                            <TextBox
+                                VerticalAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                DockPanel.Dock="Right"
+                                Text="{Binding Ring.Thickness, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                        </DockPanel>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Width="{StaticResource TabItemWidth}" Header="{x:Static properties:Resources.SettingsWindow_TabItem_Button}">
+
+                <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
+
+                    <StackPanel Margin="{StaticResource TabItemPadding}">
+
+                        <DockPanel Margin="{StaticResource TabItemControlMargin}">
+
+                            <Label Content="{x:Static properties:Resources.SettingsWindow_Image}" DockPanel.Dock="Left" />
+
+                            <TextBox
+                                VerticalAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                DockPanel.Dock="Right"
+                                Text="{Binding Button.Image, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                        </DockPanel>
+                        <DockPanel Margin="{StaticResource TabItemControlMargin}">
+
+                            <Label Content="{x:Static properties:Resources.SettingsWindow_Diameter}" DockPanel.Dock="Left" />
+
+                            <TextBox
+                                VerticalAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                DockPanel.Dock="Right"
+                                Text="{Binding Button.Diameter, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                        </DockPanel>
+                        <DockPanel Margin="{StaticResource TabItemControlMargin}">
+
+                            <Label Content="{x:Static properties:Resources.SettingsWindow_Background}" DockPanel.Dock="Left" />
+
+                            <xctk:ColorPicker DockPanel.Dock="Right" SelectedColor="{Binding Button.Background, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                        </DockPanel>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Width="{StaticResource TabItemWidth}" Header="{x:Static properties:Resources.SettingsWindow_TabItem_Shortcut}">
+
+                <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
+
+                    <StackPanel Margin="{StaticResource TabItemPadding}">
+
+                        <DockPanel Margin="{StaticResource TabItemControlMargin}">
+
+                            <Label Content="{x:Static properties:Resources.SettingsWindow_FolderImage}" DockPanel.Dock="Left" />
+
+                            <TextBox
+                                VerticalAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                DockPanel.Dock="Right"
+                                Text="{Binding Shortcut.FolderImage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                        </DockPanel>
+
+                        <CheckBox
+                            Margin="{StaticResource TabItemControlMargin}"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Content="{x:Static properties:Resources.SettingsWindow_ShowWindowContextMenu}"
+                            IsChecked="{Binding Shortcut.ShowWindowsContextMenu, Mode=TwoWay}" />
+
+                        <DockPanel Margin="{StaticResource TabItemControlMargin}">
+
+                            <Label Content="{x:Static properties:Resources.SettingsWindow_Width}" DockPanel.Dock="Left" />
+
+                            <TextBox
+                                VerticalAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                DockPanel.Dock="Right"
+                                Text="{Binding Shortcut.Width, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                        </DockPanel>
+                        <DockPanel Margin="{StaticResource TabItemControlMargin}">
+
+                            <Label Content="{x:Static properties:Resources.SettingsWindow_Height}" DockPanel.Dock="Left" />
+
+                            <TextBox
+                                VerticalAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                DockPanel.Dock="Right"
+                                Text="{Binding Shortcut.Height, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                        </DockPanel>
+                        <DockPanel Margin="{StaticResource TabItemControlMargin}">
+
+                            <Label Content="{x:Static properties:Resources.SettingsWindow_Opacity}" DockPanel.Dock="Left" />
+
+                            <Slider
+                                VerticalAlignment="Center"
+                                DockPanel.Dock="Right"
+                                Maximum="1"
+                                Minimum="0"
+                                SmallChange="0.1"
+                                Value="{Binding Shortcut.Opacity, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                        </DockPanel>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+        </TabControl>
+        <Button
+            Grid.Row="1"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"
+            Command="{Binding SaveConfigCommand}"
+            Content="{x:Static properties:Resources.SettingsWindow_Save}">
+
+            <Button.Margin>
+                <Thickness
+                    Bottom="15"
+                    Right="15"
+                    Top="15" />
+            </Button.Margin>
+        </Button>
+    </Grid>
+</Window>

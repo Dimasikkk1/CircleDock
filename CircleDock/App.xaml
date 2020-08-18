@@ -1,0 +1,15 @@
+﻿<Application
+    x:Class="CircleDock.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:CircleDock.Converters">
+    <Application.Resources>
+        <converters:BoolToVisibility x:Key="BoolToVisibilityConverter" />
+        <converters:HalfDevider x:Key="HalfDeviderConverter" />
+        <converters:DoubleToThickness x:Key="DoubleToThicknessConverter" />
+        <converters:ShortcutToImage x:Key="ShortcutToImageConverter" />
+        <converters:StringToImage x:Key="StringToImageConverter" />
+        <converters:RotationToLeft x:Key="RotationToLeftConverter" />
+        <converters:RotationToTop x:Key="RotationToTopConverter" />
+    </Application.Resources>
+</Application>
