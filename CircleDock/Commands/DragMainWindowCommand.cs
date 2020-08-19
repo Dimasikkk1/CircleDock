@@ -10,7 +10,7 @@ namespace CircleDock.Commands
             if (e.ChangedButton != MouseButton.Left)
                 return;
 
-            ((App)Application.Current).MainWindow.DragMove();
+            Application.Current.MainWindow.DragMove();
         })
         { }
     }
