@@ -1,6 +1,7 @@
 ﻿using CircleDock.Extensions;
 using CircleDock.Models;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
@@ -27,9 +28,20 @@ namespace CircleDock.ViewModels
 
         public MainViewModel()
         {
+            Config.Initialize();
+
             dock = new Dock();
 
-            Shortcuts = dock.Shortcuts;
+            try
+            {
+                Shortcuts = new ObservableCollection<Shortcut>(XmlReader.GetShortcuts());
+            }
+            catch (Exception)
+            {
+                Shortcuts = new ObservableCollection<Shortcut>();
+            }
+
+            Shortcuts.CollectionChanged += (s, _) => XmlReader.SaveShortcuts((IEnumerable<Shortcut>)s);
 
             ChangeVisibility = new DelegateCommand<EventArgs>(_ => Window.Visibility = !Window.Visibility);
             MouseWheel = new DelegateCommand<MouseWheelEventArgs>(e => dock.Rotate(-e.Delta / 120));

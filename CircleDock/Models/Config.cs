@@ -1,18 +1,24 @@
 ﻿using System;
 using System.Globalization;
+using System.IO;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Media;
+using System.Xml;
 
 namespace CircleDock.Models
 {
     static class Config
     {
+        public const string ConfigPath = "Resources/Config.xml";
+        public const string RootElement = "Config";
+
         public static ObservableDictionary<Type, ObservableDictionary<string, object>> Properties = new ObservableDictionary<Type, ObservableDictionary<string, object>>()
         {
             { typeof(WindowProperties), new ObservableDictionary<string, object>() 
             {
                 { "Visibility", true },
-                { "Width", SystemParameters.PrimaryScreenWidth },
+                { "Width", SystemParameters.PrimaryScreenWidth }, // Надо будет что-то придумать для нескольких дисплеев
                 { "Height", SystemParameters.PrimaryScreenHeight },
                 { "Left", 0d },
                 { "Top", 0d },
@@ -46,5 +52,17 @@ namespace CircleDock.Models
                 { "Opacity", 1d }
             } }
         };
+
+        public static void Initialize()
+        {
+            try
+            {
+                XmlReader.LoadConfig();
+            }
+            catch (FileNotFoundException)
+            {
+                XmlReader.SaveConfig();
+            }
+        }
     }
 }

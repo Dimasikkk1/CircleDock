@@ -90,6 +90,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\CloseMainWindowCommand.cs" />
+    <Compile Include="Commands\DragMainWindowCommand.cs" />
     <Compile Include="Commands\HideSettingsWindowCommand.cs" />
     <Compile Include="Commands\ShowSettingsWindowCommand.cs" />
     <Compile Include="Controls\CircleDockControl.xaml.cs">
@@ -106,6 +107,7 @@
     <Compile Include="Extensions\IDataObjectExtension.cs" />
     <Compile Include="Extensions\StringExtension.cs" />
     <Compile Include="Models\Shortcut.cs" />
+    <Compile Include="Models\XmlReader.cs" />
     <Compile Include="Properties\Resources.ru-RU.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -136,7 +138,6 @@
     <Compile Include="Models\ButtonProperties.cs" />
     <Compile Include="Models\Config.cs" />
     <Compile Include="DelegateCommand.cs" />
-    <Compile Include="Models\ConfigManager.cs" />
     <Compile Include="Models\Dock.cs" />
     <Compile Include="Models\DockProperties.cs" />
     <Compile Include="Models\Property.cs" />

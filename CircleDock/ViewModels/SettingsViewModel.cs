@@ -14,6 +14,6 @@ namespace CircleDock.ViewModels
 
         public ICommand SaveConfigCommand { get; }
 
-        public SettingsViewModel() => SaveConfigCommand = new DelegateCommand<EventArgs>(_ => ConfigManager.Save());
+        public SettingsViewModel() => SaveConfigCommand = new DelegateCommand<EventArgs>(_ => XmlReader.SaveConfig());
     }
 }

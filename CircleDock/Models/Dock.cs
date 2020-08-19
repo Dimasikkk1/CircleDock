@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
@@ -11,33 +12,26 @@ namespace CircleDock.Models
     {
         public ObservableCollection<Shortcut> Shortcuts { get; private set; }
 
-        public Dock() : base()
+        public Dock()
         {
-            try
-            {
-                ConfigManager.Load();
-            }
-            catch (FileNotFoundException)
-            {
-                ConfigManager.Save();
-            }
-
             Shortcuts = new ObservableCollection<Shortcut>();
             Shortcuts.CollectionChanged += (s, e) => GiveIndexes();
 
-            //Hook.GlobalEvents().MouseClick += (s, e) =>
-            //{
-            //    if (e.Button != System.Windows.Forms.MouseButtons.Middle)
-            //        return;
+#if !DEBUG
+            Hook.GlobalEvents().MouseClick += (s, e) =>
+            {
+                if (e.Button != System.Windows.Forms.MouseButtons.Middle)
+                    return;
 
-            //    Window.ChangeVisibility();
+                Window.ChangeVisibility();
 
-            //    if (!Window.Visibility)
-            //        return;
+                if (!Window.Visibility)
+                    return;
 
-            //    Config.Properties["Window.Left"] = e.X - Window.Width / 2;
-            //    Config.Properties["Window.Top"] = e.Y - Window.Height / 2;
-            //};
+                Config.Properties["Window.Left"] = e.X - Window.Width / 2;
+                Config.Properties["Window.Top"] = e.Y - Window.Height / 2;
+            };
+#endif
         }
 
         public void Rotate(int delta)
