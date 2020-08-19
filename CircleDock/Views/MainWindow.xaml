@@ -25,8 +25,9 @@
     mc:Ignorable="d">
 
     <Window.Resources>
-        <commands:ShowSettingsWindowCommand x:Key="OpenSettingsWindowCommand" />
+        <commands:DragMainWindowCommand x:Key="DragMainWindowCommand"/>
         <commands:CloseMainWindowCommand x:Key="CloseMainWindowCommand" />
+        <commands:ShowSettingsWindowCommand x:Key="OpenSettingsWindowCommand" />
     </Window.Resources>
 
     <Window.Background>
@@ -35,6 +36,9 @@
 
     <!--  Window Commands  -->
     <i:Interaction.Triggers>
+        <i:EventTrigger EventName="MouseDown">
+            <i:InvokeCommandAction Command="{StaticResource DragMainWindowCommand}" PassEventArgsToCommand="True"/>
+        </i:EventTrigger>
         <i:EventTrigger EventName="DragEnter">
             <i:InvokeCommandAction Command="{Binding DragEnter}" PassEventArgsToCommand="True" />
         </i:EventTrigger>
