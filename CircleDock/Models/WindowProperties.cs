@@ -91,5 +91,7 @@
                 SetValue(value);
             }
         }
+
+        public void ChangeVisibility() => Visibility = !Visibility;
     }
 }

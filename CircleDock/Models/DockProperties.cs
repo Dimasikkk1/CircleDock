@@ -69,5 +69,7 @@
                 SetValue(value);
             }
         }
+
+        public void RotateShortcuts(int delta) => Rotation += RotationStep * delta;
     }
 }
