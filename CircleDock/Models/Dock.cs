@@ -34,28 +34,6 @@ namespace CircleDock.Models
 #endif
         }
 
-        public void Rotate(int delta)
-        {
-            if (!(bool)Config.Properties[typeof(DockProperties)]["EnableRotation"])
-                return;
-
-            Config.Properties[typeof(DockProperties)]["Rotation"] = (double)Config.Properties[typeof(DockProperties)]["Rotation"] + delta * (double)Config.Properties[typeof(DockProperties)]["RotationStep"];
-        }
-        public void DropFiles(IDataObject data)
-        {
-            string[] files = (string[])data.GetData(DataFormats.FileDrop);
-
-            for (int i = 0; i < files.Length; i++)
-                if (Shortcuts.FirstOrDefault(p => p.Path == files[i]) == null)
-                    Shortcuts.Add(new Shortcut(files[i]));
-        }
-        public void Execute(Shortcut shortcut)
-        {
-            if (shortcut.IsDirectory)
-                Process.Start("explorer.exe", $"/n, {shortcut.Path}");
-            else
-                Process.Start(shortcut.Path);
-        }
         public void AddFolder()
         {
             throw new InvalidOperationException();

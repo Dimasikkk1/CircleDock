@@ -35,7 +35,6 @@ namespace CircleDock.Models
                 OnPropertyChanged();
             }
         }
-        public bool IsDirectory { get; private set; }
 
         public Shortcut(string path)
         {

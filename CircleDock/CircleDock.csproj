@@ -105,6 +105,8 @@
     <Compile Include="Converters\StringToImage.cs" />
     <Compile Include="Extensions\DoubleExtension.cs" />
     <Compile Include="Extensions\IDataObjectExtension.cs" />
+    <Compile Include="Extensions\ObservableCollectionExtension.cs" />
+    <Compile Include="Extensions\ShortcutExtension.cs" />
     <Compile Include="Extensions\StringExtension.cs" />
     <Compile Include="Models\Shortcut.cs" />
     <Compile Include="Models\XmlReader.cs" />

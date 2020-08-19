@@ -46,7 +46,7 @@ namespace CircleDock.ViewModels
             ChangeVisibility = new DelegateCommand<EventArgs>(_ => Window.ChangeVisibility());
             MouseWheel = new DelegateCommand<MouseWheelEventArgs>(e => Dock.RotateShortcuts(-e.Delta / 120));
             DragEnter = new DelegateCommand<DragEventArgs>(e => e.Effects = e.Data.IsFile() ? DragDropEffects.Copy : DragDropEffects.None);
-            Drop = new DelegateCommand<DragEventArgs>(e => dock.DropFiles(e.Data), e => e.Data.IsFile());
+            Drop = new DelegateCommand<DragEventArgs>(e => Shortcuts.AddFiles(e.Data), e => e.Data.IsFile());
             AddFolder = new DelegateCommand<EventArgs>(_ => dock.AddFolder());
             AddShortcut = new DelegateCommand<EventArgs>(_ => dock.AddShortcut());
         }
