@@ -14,6 +14,14 @@ namespace CircleDock.Extensions
             for (int i = 0; i < files.Length; i++)
                 if (collection.FirstOrDefault(p => p.Path == files[i]) == null)
                     collection.Add(new Shortcut(files[i]));
+
+            GiveIndexes(collection);
+        }
+
+        public static void GiveIndexes(this ObservableCollection<Shortcut> shortcuts)
+        {
+            for (int i = 0; i < shortcuts.Count; i++)
+                shortcuts[i].Index = i;
         }
     }
 }

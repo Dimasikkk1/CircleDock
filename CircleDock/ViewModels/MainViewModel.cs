@@ -8,10 +8,9 @@ using System.Windows.Input;
 
 namespace CircleDock.ViewModels
 {
-    class MainViewModel : ViewModel
+    class MainViewModel
     {
-        private readonly Dock dock;
-
+        public ObservableDictionary<Type, ObservableDictionary<string, object>> Properties { get; }
         public WindowProperties Window { get; } = new WindowProperties();
         public DockProperties Dock { get; } = new DockProperties();
         public RingProperties Ring { get; } = new RingProperties();
@@ -23,14 +22,12 @@ namespace CircleDock.ViewModels
         public ICommand MouseWheel { get; }
         public ICommand DragEnter { get; }
         public ICommand Drop { get; }
-        public ICommand AddFolder { get; }
-        public ICommand AddShortcut { get; }
 
         public MainViewModel()
         {
             Config.Initialize();
 
-            dock = new Dock();
+            Properties = Config.Properties;
 
             try
             {
@@ -47,8 +44,22 @@ namespace CircleDock.ViewModels
             MouseWheel = new DelegateCommand<MouseWheelEventArgs>(e => Dock.RotateShortcuts(-e.Delta / 120));
             DragEnter = new DelegateCommand<DragEventArgs>(e => e.Effects = e.Data.IsFile() ? DragDropEffects.Copy : DragDropEffects.None);
             Drop = new DelegateCommand<DragEventArgs>(e => Shortcuts.AddFiles(e.Data), e => e.Data.IsFile());
-            AddFolder = new DelegateCommand<EventArgs>(_ => dock.AddFolder());
-            AddShortcut = new DelegateCommand<EventArgs>(_ => dock.AddShortcut());
+
+#if !DEBUG
+            Hook.GlobalEvents().MouseClick += (s, e) =>
+            {
+                if (e.Button != System.Windows.Forms.MouseButtons.Middle)
+                    return;
+
+                Window.ChangeVisibility();
+
+                if (!Window.Visibility)
+                    return;
+
+                Window.Left = e.X - Window.Width / 2;
+                Window.Top = e.Y - Window.Height / 2;
+            };
+#endif
         }
     }
 }

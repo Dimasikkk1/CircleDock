@@ -2,6 +2,7 @@
     x:Class="CircleDock.Controls.CircleDockControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:commands="clr-namespace:CircleDock.Commands"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -9,6 +10,10 @@
     d:DesignHeight="720"
     d:DesignWidth="1280"
     mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <commands:ChangePropertiesCommand x:Key="ChangePropertiesCommand" />
+    </UserControl.Resources>
 
     <!--  UserControl Triggers  -->
     <i:Interaction.Triggers>
@@ -25,6 +30,12 @@
                     </Storyboard>
                 </i:ControlStoryboardAction.Storyboard>
             </i:ControlStoryboardAction>
+        </i:PropertyChangedTrigger>
+        <i:PropertyChangedTrigger Binding="{Binding ElementName=circleDock, Path=Properties}">
+            <i:InvokeCommandAction
+                Command="{StaticResource ChangePropertiesCommand}"
+                CommandParameter="{Binding ElementName=circleDock}"
+                PassEventArgsToCommand="True" />
         </i:PropertyChangedTrigger>
     </i:Interaction.Triggers>
 
@@ -131,7 +142,7 @@
             <!--  ListBox Triggers  -->
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="SelectionChanged">
-                    <i:InvokeCommandAction Command="{Binding ElementName=circleDock, Path=ShortcutCommand}" PassEventArgsToCommand="True" />
+                    <i:InvokeCommandAction Command="{Binding ElementName=circleDock, Path=ShortcutSelectedCommand}" PassEventArgsToCommand="True" />
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </ListBox>

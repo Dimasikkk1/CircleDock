@@ -4,7 +4,7 @@ using System.Windows.Input;
 
 namespace CircleDock.ViewModels
 {
-    class SettingsViewModel : ViewModel
+    class SettingsViewModel
     {
         public WindowProperties Window { get; } = new WindowProperties();
         public DockProperties Dock { get; } = new DockProperties();

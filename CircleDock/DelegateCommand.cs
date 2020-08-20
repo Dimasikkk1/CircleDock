@@ -3,7 +3,7 @@ using System.Windows.Input;
 
 namespace CircleDock
 {
-    public class DelegateCommand<T> : ICommand where T : EventArgs
+    public class DelegateCommand<T> : ICommand
     {
         private bool canExecute;
 

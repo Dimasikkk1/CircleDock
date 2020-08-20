@@ -5,13 +5,13 @@ namespace CircleDock.Models
 {
     abstract class Property : INotifyPropertyChanged
     {
-        public Property() => Config.Properties[GetType()].CollectionChanged += (s, e) => NotifyView(e.NewItems[0].ToString());
+        public Property() => Config.Properties[GetType()].CollectionChanged += (s, e) => NotifyPropertyChanged(e.NewItems[0].ToString());
 
         protected virtual object GetValue([CallerMemberName] string property = "") => Config.Properties[GetType()][property];
         protected virtual void SetValue(object value, [CallerMemberName] string property = "") => Config.Properties[GetType()][property] = value;
-        protected virtual void NotifyView([CallerMemberName] string property = "") => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
 
         #region INotifyPropertyChanged
+        protected virtual void NotifyPropertyChanged([CallerMemberName] string property = "") => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
         public event PropertyChangedEventHandler PropertyChanged;
         #endregion
     }

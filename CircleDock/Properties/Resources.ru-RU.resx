@@ -117,12 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="MainWindow_ContextMenu_Add" xml:space="preserve">
-    <value>Добавить</value>
-  </data>
-  <data name="MainWindow_ContextMenu_Folder" xml:space="preserve">
-    <value>Папка</value>
-  </data>
   <data name="MainWindow_ContextMenu_Hide" xml:space="preserve">
     <value>Скрыть</value>
   </data>
@@ -131,9 +125,6 @@
   </data>
   <data name="MainWindow_ContextMenu_Settings" xml:space="preserve">
     <value>Настройки</value>
-  </data>
-  <data name="MainWindow_ContextMenu_Shortcut" xml:space="preserve">
-    <value>Ярлык</value>
   </data>
   <data name="SettingsWindow" xml:space="preserve">
     <value>Окно настроек</value>

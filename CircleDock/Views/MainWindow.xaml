@@ -25,7 +25,7 @@
     mc:Ignorable="d">
 
     <Window.Resources>
-        <commands:DragMainWindowCommand x:Key="DragMainWindowCommand"/>
+        <commands:DragMainWindowCommand x:Key="DragMainWindowCommand" />
         <commands:CloseMainWindowCommand x:Key="CloseMainWindowCommand" />
         <commands:ShowSettingsWindowCommand x:Key="OpenSettingsWindowCommand" />
     </Window.Resources>
@@ -34,10 +34,10 @@
         <SolidColorBrush Opacity="0" />
     </Window.Background>
 
-    <!--  Window Commands  -->
+    <!--  Window Event Commands  -->
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="MouseDown">
-            <i:InvokeCommandAction Command="{StaticResource DragMainWindowCommand}" PassEventArgsToCommand="True"/>
+            <i:InvokeCommandAction Command="{StaticResource DragMainWindowCommand}" PassEventArgsToCommand="True" />
         </i:EventTrigger>
         <i:EventTrigger EventName="DragEnter">
             <i:InvokeCommandAction Command="{Binding DragEnter}" PassEventArgsToCommand="True" />
@@ -53,17 +53,13 @@
     <Window.ContextMenu>
         <ContextMenu>
             <MenuItem Command="{Binding ChangeVisibility}" Header="{x:Static properties:Resources.MainWindow_ContextMenu_Hide}" />
-            <MenuItem Header="{x:Static properties:Resources.MainWindow_ContextMenu_Add}">
-                <MenuItem Command="{Binding AddFolder}" Header="{x:Static properties:Resources.MainWindow_ContextMenu_Folder}" />
-                <MenuItem Command="{Binding AddShortcut}" Header="{x:Static properties:Resources.MainWindow_ContextMenu_Shortcut}" />
-            </MenuItem>
             <MenuItem Command="{StaticResource OpenSettingsWindowCommand}" Header="{x:Static properties:Resources.MainWindow_ContextMenu_Settings}" />
             <MenuItem Command="{StaticResource CloseMainWindowCommand}" Header="{x:Static properties:Resources.MainWindow_ContextMenu_Quit}" />
         </ContextMenu>
     </Window.ContextMenu>
 
     <Grid>
-        <!--  Кольцо  -->
+        <!--  Background Ring  -->
         <Border
             Width="{Binding Ring.Diameter}"
             Height="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Width, Mode=TwoWay}"
@@ -76,14 +72,16 @@
             </Border.Resources>
         </Border>
 
-        <!--  Ярлыки  -->
+        <!--  Shortcuts  -->
         <controls:CircleDockControl
+            Properties="{Binding Properties}"
             Rotation="{Binding Dock.Rotation}"
-            ShortcutCommand="{Binding ShortcutCommand}"
+            ShortcutSelectedCommand="{Binding ShortcutSelectedCommand}"
             Shortcuts="{Binding Shortcuts}"
             ShortcutsHeight="{Binding Shortcut.Height}"
             ShortcutsWidth="{Binding Shortcut.Width}" />
 
+        <!--  Central Button  -->
         <Button
             Width="{Binding Button.Diameter}"
             Height="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Width, Mode=TwoWay}"

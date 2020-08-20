@@ -5,10 +5,23 @@ namespace CircleDock.Models
 {
     public class Shortcut : INotifyPropertyChanged
     {
+        private int index;
         private string path;
         private string label;
 
-        public int Index { get; set; }
+        public int Index
+        {
+            get => index;
+            set
+            {
+                if (value == index)
+                    return;
+
+                index = value;
+
+                NotifyPropertyChanged();
+            }
+        }
         public string Path
         {
             get => path;
@@ -19,7 +32,7 @@ namespace CircleDock.Models
 
                 path = value;
 
-                OnPropertyChanged();
+                NotifyPropertyChanged();
             }
         }
         public string Label
@@ -32,7 +45,7 @@ namespace CircleDock.Models
 
                 label = value;
 
-                OnPropertyChanged();
+                NotifyPropertyChanged();
             }
         }
 
@@ -43,7 +56,7 @@ namespace CircleDock.Models
         }
 
         #region INotifyPropertyChanged
-        public void OnPropertyChanged([CallerMemberName] string prop = "") => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+        public void NotifyPropertyChanged([CallerMemberName] string prop = "") => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         public event PropertyChangedEventHandler PropertyChanged;
         #endregion
     }

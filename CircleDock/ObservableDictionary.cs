@@ -4,7 +4,7 @@ using System.Collections.Specialized;
 
 namespace CircleDock
 {
-    class ObservableDictionary<TKey, TValue> : IDictionary<TKey, TValue>, INotifyCollectionChanged where TValue : class
+    public class ObservableDictionary<TKey, TValue> : IDictionary<TKey, TValue>, INotifyCollectionChanged where TValue : class
     {
         private readonly IDictionary<TKey, TValue> pairs;
 

@@ -13,6 +13,7 @@ namespace CircleDock.Models
         public const string ConfigRootElement = "Config";
 
         public const string ShortcutsPath = "Resources/Shortcuts.xml";
+        public const string ShortcutsRootElement = "Shortcuts";
 
         public static void LoadConfig(string configPath = ConfigPath)
         {
@@ -92,7 +93,7 @@ namespace CircleDock.Models
         public static void SaveShortcuts(IEnumerable<Shortcut> shortcuts, string shortcutsPath = ShortcutsPath)
         {
             XmlDocument shortcutsFile = new XmlDocument();
-            XmlNode rootElement = shortcutsFile.DocumentElement;
+            XmlNode rootElement = shortcutsFile.CreateElement(ShortcutsRootElement);
 
             foreach (Shortcut shortcut in shortcuts)
             {

@@ -1,4 +1,5 @@
 ﻿using CircleDock.Models;
+using System;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -80,14 +81,26 @@ namespace CircleDock.Controls
                 typeof(CircleDockControl),
                 new PropertyMetadata(0d));
 
-        public ICommand ShortcutCommand
+        public ObservableDictionary<Type, ObservableDictionary<string, object>> Properties
         {
-            get => (ICommand)GetValue(ShortcutCommandProperty);
-            set => SetValue(ShortcutCommandProperty, value);
+            get => (ObservableDictionary<Type, ObservableDictionary<string, object>>)GetValue(PropertiesProperty);
+            set => SetValue(PropertiesProperty, value);
         }
-        public static readonly DependencyProperty ShortcutCommandProperty =
+        public static readonly DependencyProperty PropertiesProperty = // Звучит странно, но уж извините, куда деваться?
             DependencyProperty.Register(
-                "ShortcutCommand",
+                "Properties",
+                typeof(ObservableDictionary<Type, ObservableDictionary<string, object>>),
+                typeof(CircleDockControl),
+                new PropertyMetadata(null));
+
+        public ICommand ShortcutSelectedCommand
+        {
+            get => (ICommand)GetValue(ShortcutSelectedCommandProperty);
+            set => SetValue(ShortcutSelectedCommandProperty, value);
+        }
+        public static readonly DependencyProperty ShortcutSelectedCommandProperty =
+            DependencyProperty.Register(
+                "ShortcutSelectedCommand",
                 typeof(ICommand),
                 typeof(CircleDockControl),
                 new PropertyMetadata(null));

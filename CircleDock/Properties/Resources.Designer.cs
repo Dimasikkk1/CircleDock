@@ -61,24 +61,6 @@ namespace CircleDock.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Add.
-        /// </summary>
-        public static string MainWindow_ContextMenu_Add {
-            get {
-                return ResourceManager.GetString("MainWindow_ContextMenu_Add", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Folder.
-        /// </summary>
-        public static string MainWindow_ContextMenu_Folder {
-            get {
-                return ResourceManager.GetString("MainWindow_ContextMenu_Folder", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Ищет локализованную строку, похожую на Hide.
         /// </summary>
         public static string MainWindow_ContextMenu_Hide {
@@ -102,15 +84,6 @@ namespace CircleDock.Properties {
         public static string MainWindow_ContextMenu_Settings {
             get {
                 return ResourceManager.GetString("MainWindow_ContextMenu_Settings", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Shortcut.
-        /// </summary>
-        public static string MainWindow_ContextMenu_Shortcut {
-            get {
-                return ResourceManager.GetString("MainWindow_ContextMenu_Shortcut", resourceCulture);
             }
         }
         
