@@ -6,36 +6,23 @@ namespace CircleDock.Models
     {
         public string Image
         {
-            get => (string)GetValue();
-            set
-            {
-                if (value == Image)
-                    return;
-
-                SetValue(value);
-            }
+            get => GetValue<string>();
+            set => SetValue(value);
         }
         public double Diameter
         {
-            get => (double)GetValue();
-            set
-            {
-                if (value == Diameter)
-                    return;
-
-                SetValue(value);
-            }
+            get => GetValue<double>();
+            set => SetValue(value);
         }
         public Color Background
         {
-            get => (Color)GetValue();
-            set
-            {
-                if (value == Background)
-                    return;
+            get => GetValue<Color>();
+            set => SetValue(value);
+        }
 
-                SetValue(value);
-            }
+        public ButtonProperties(string configFile) : base(configFile)
+        {
+            
         }
     }
 }

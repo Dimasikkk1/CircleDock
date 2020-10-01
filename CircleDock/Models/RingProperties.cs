@@ -6,36 +6,20 @@ namespace CircleDock.Models
     {
         public Color Color
         {
-            get => (Color)GetValue();
-            set
-            {
-                if (value == Color)
-                    return;
-
-                SetValue(value);
-            }
+            get => GetValue<Color>();
+            set => SetValue(value);
         }
         public double Diameter
         {
-            get => (double)GetValue();
-            set
-            {
-                if (value == Diameter)
-                    return;
-
-                SetValue(value);
-            }
+            get => GetValue<double>();
+            set => SetValue(value);
         }
         public double Thickness
         {
-            get => (double)GetValue();
-            set
-            {
-                if (value == Thickness)
-                    return;
-
-                SetValue(value);
-            }
+            get => GetValue<double>();
+            set => SetValue(value);
         }
+
+        public RingProperties(string configFile) : base(configFile) { }
     }
 }

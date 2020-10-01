@@ -1,7 +1,36 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="CircleDock.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="WindowConfig" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Resources/Config/Window.cfg</Value>
+    </Setting>
+    <Setting Name="DockConfig" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Resources/Config/Dock.cfg</Value>
+    </Setting>
+    <Setting Name="RingConfig" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Resources/Config/Ring.cfg</Value>
+    </Setting>
+    <Setting Name="ButtonConfig" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Resources/Config/Button.cfg</Value>
+    </Setting>
+    <Setting Name="ShortcutConfig" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Resources/Config/Shortcut.cfg</Value>
+    </Setting>
+    <Setting Name="WindowConfigDefault" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">DefaultConfig/Window.cfg</Value>
+    </Setting>
+    <Setting Name="DockConfigDefault" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">DefaultConfig/Dock.cfg</Value>
+    </Setting>
+    <Setting Name="RingConfigDefault" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">DefaultConfig/Ring.cfg</Value>
+    </Setting>
+    <Setting Name="ButtonConfigDefault" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">DefaultConfig/Button.cfg</Value>
+    </Setting>
+    <Setting Name="ShortcutConfigDefault" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">DefaultConfig/Shortcut.cfg</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>
