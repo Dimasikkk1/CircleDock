@@ -1,95 +1,83 @@
-﻿namespace CircleDock.Models
+﻿using System.Globalization;
+using System.Windows;
+using System.Xml.Linq;
+
+namespace CircleDock.Models
 {
     class WindowProperties : Property
     {
+        protected override XDocument Default => new XDocument(
+            new XElement(Root,
+                new XElement(Element,
+                    new XAttribute(AttributeKey, nameof(Visibility)),
+                    new XAttribute(AttributeValue, true)),
+                new XElement(Element,
+                    new XAttribute(AttributeKey, nameof(Width)),
+                    new XAttribute(AttributeValue, SystemParameters.PrimaryScreenWidth)),
+                new XElement(Element,
+                    new XAttribute(AttributeKey, nameof(Height)),
+                    new XAttribute(AttributeValue, SystemParameters.PrimaryScreenHeight)),
+                new XElement(Element,
+                    new XAttribute(AttributeKey, nameof(Left)),
+                    new XAttribute(AttributeValue, 0)),
+                new XElement(Element,
+                    new XAttribute(AttributeKey, nameof(Top)),
+                    new XAttribute(AttributeValue, 0)),
+                new XElement(Element,
+                    new XAttribute(AttributeKey, nameof(Topmost)),
+                    new XAttribute(AttributeValue, true)),
+                new XElement(Element,
+                    new XAttribute(AttributeKey, nameof(HideAfterOpen)),
+                    new XAttribute(AttributeValue, false)),
+                new XElement(Element,
+                    new XAttribute(AttributeKey, nameof(Language)),
+                    new XAttribute(AttributeValue, CultureInfo.CurrentCulture.Name))));
+
         public bool Visibility
         {
-            get => (bool)GetValue();
-            set
-            {
-                if (value == Visibility)
-                    return;
-
-                SetValue(value);
-            }
+            get => GetValue<bool>();
+            set => SetValue(value);
         }
         public double Width
         {
-            get => (double)GetValue();
-            set
-            {
-                if (value == Width)
-                    return;
-
-                SetValue(value);
-            }
+            get => GetValue<double>();
+            set => SetValue(value);
         }
         public double Height
         {
-            get => (double)GetValue();
-            set
-            {
-                if (value == Height)
-                    return;
-
-                SetValue(value);
-            }
+            get => GetValue<double>();
+            set => SetValue(value);
         }
         public double Left
         {
-            get => (double)GetValue();
-            set
-            {
-                if (value == Left)
-                    return;
-
-                SetValue(value);
-            }
+            get => GetValue<double>();
+            set => SetValue(value);
         }
         public double Top
         {
-            get => (double)GetValue();
-            set
-            {
-                if (value == Top)
-                    return;
-
-                SetValue(value);
-            }
+            get => GetValue<double>();
+            set => SetValue(value);
         }
         public bool Topmost
         {
-            get => (bool)GetValue();
-            set
-            {
-                if (value == Topmost)
-                    return;
-
-                SetValue(value);
-            }
+            get => GetValue<bool>();
+            set => SetValue(value);
         }
         public bool HideAfterOpen
         {
-            get => (bool)GetValue();
-            set
-            {
-                if (value == HideAfterOpen)
-                    return;
-
-                SetValue(value);
-            }
+            get => GetValue<bool>();
+            set => SetValue(value);
         }
-
         public string Language
         {
-            get => (string)GetValue();
-            set
-            {
-                if (value == Language)
-                    return;
+            get => GetValue<string>();
+            set => SetValue(value);
+        }
 
-                SetValue(value);
-            }
+        public WindowProperties(string configPath)
+        {
+            this.configPath = configPath;
+            configFile = Default;
         }
 
         public void ChangeVisibility() => Visibility = !Visibility;

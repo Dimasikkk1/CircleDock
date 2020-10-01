@@ -19,7 +19,7 @@ namespace CircleDock.Models
 
                 index = value;
 
-                NotifyPropertyChanged();
+                OnNotifyPropertyChanged();
             }
         }
         public string Path
@@ -32,7 +32,7 @@ namespace CircleDock.Models
 
                 path = value;
 
-                NotifyPropertyChanged();
+                OnNotifyPropertyChanged();
             }
         }
         public string Label
@@ -45,7 +45,7 @@ namespace CircleDock.Models
 
                 label = value;
 
-                NotifyPropertyChanged();
+                OnNotifyPropertyChanged();
             }
         }
 
@@ -56,7 +56,8 @@ namespace CircleDock.Models
         }
 
         #region INotifyPropertyChanged
-        public void NotifyPropertyChanged([CallerMemberName] string prop = "") => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+        private void OnNotifyPropertyChanged([CallerMemberName] string prop = "") => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+        
         public event PropertyChangedEventHandler PropertyChanged;
         #endregion
     }

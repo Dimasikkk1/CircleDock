@@ -53,16 +53,16 @@ namespace CircleDock.Models
             } }
         };
 
-        public static void Initialize()
-        {
-            try
-            {
-                XmlReader.LoadConfig();
-            }
-            catch (FileNotFoundException)
-            {
-                XmlReader.SaveConfig();
-            }
-        }
+        //public static void Initialize()
+        //{
+        //    try
+        //    {
+        //        XmlReader.LoadConfig();
+        //    }
+        //    catch (FileNotFoundException)
+        //    {
+        //        XmlReader.SaveConfig();
+        //    }
+        //}
     }
 }

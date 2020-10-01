@@ -22,5 +22,95 @@ namespace CircleDock.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Resources/Config/Window.cfg")]
+        public string WindowConfig {
+            get {
+                return ((string)(this["WindowConfig"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Resources/Config/Dock.cfg")]
+        public string DockConfig {
+            get {
+                return ((string)(this["DockConfig"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Resources/Config/Ring.cfg")]
+        public string RingConfig {
+            get {
+                return ((string)(this["RingConfig"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Resources/Config/Button.cfg")]
+        public string ButtonConfig {
+            get {
+                return ((string)(this["ButtonConfig"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Resources/Config/Shortcut.cfg")]
+        public string ShortcutConfig {
+            get {
+                return ((string)(this["ShortcutConfig"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("DefaultConfig/Window.cfg")]
+        public string WindowConfigDefault {
+            get {
+                return ((string)(this["WindowConfigDefault"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("DefaultConfig/Dock.cfg")]
+        public string DockConfigDefault {
+            get {
+                return ((string)(this["DockConfigDefault"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("DefaultConfig/Ring.cfg")]
+        public string RingConfigDefault {
+            get {
+                return ((string)(this["RingConfigDefault"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("DefaultConfig/Button.cfg")]
+        public string ButtonConfigDefault {
+            get {
+                return ((string)(this["ButtonConfigDefault"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("DefaultConfig/Shortcut.cfg")]
+        public string ShortcutConfigDefault {
+            get {
+                return ((string)(this["ShortcutConfigDefault"]));
+            }
+        }
     }
 }
