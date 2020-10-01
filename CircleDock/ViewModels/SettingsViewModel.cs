@@ -1,5 +1,4 @@
 ﻿using CircleDock.Models;
-using CircleDock.Properties;
 using System;
 using System.Windows.Input;
 
@@ -7,14 +6,14 @@ namespace CircleDock.ViewModels
 {
     class SettingsViewModel
     {
-        public WindowProperties Window { get; } = new WindowProperties(Settings.Default.WindowConfig);
-        public DockProperties Dock { get; } = new DockProperties(Settings.Default.DockConfig);
-        public RingProperties Ring { get; } = new RingProperties(Settings.Default.RingConfig);
-        public ButtonProperties Button { get; } = new ButtonProperties(Settings.Default.ButtonConfig);
-        public ShortcutProperties Shortcut { get; } = new ShortcutProperties(Settings.Default.ShortcutConfig);
+        public WindowProperties Window { get; } = new WindowProperties();
+        public DockProperties Dock { get; } = new DockProperties();
+        public RingProperties Ring { get; } = new RingProperties();
+        public ButtonProperties Button { get; } = new ButtonProperties();
+        public ShortcutProperties Shortcut { get; } = new ShortcutProperties();
 
         public ICommand SaveConfigCommand { get; }
 
-        //public SettingsViewModel() => SaveConfigCommand = new DelegateCommand<EventArgs>(_ => XmlReader.SaveConfig());
+        public SettingsViewModel() => SaveConfigCommand = new DelegateCommand<EventArgs>(_ => XmlReader.SaveConfig());
     }
 }

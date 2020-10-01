@@ -1,6 +1,5 @@
 ﻿using CircleDock.Extensions;
 using CircleDock.Models;
-using CircleDock.Properties;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,11 +10,12 @@ namespace CircleDock.ViewModels
 {
     class MainViewModel
     {
-        public WindowProperties Window { get; } = new WindowProperties(Settings.Default.WindowConfig);
-        public DockProperties Dock { get; } = new DockProperties(Settings.Default.DockConfig);
-        public RingProperties Ring { get; } = new RingProperties(Settings.Default.RingConfig);
-        public ButtonProperties Button { get; } = new ButtonProperties(Settings.Default.ButtonConfig);
-        public ShortcutProperties Shortcut { get; } = new ShortcutProperties(Settings.Default.ShortcutConfig);
+        public ObservableDictionary<Type, ObservableDictionary<string, object>> Properties { get; }
+        public WindowProperties Window { get; } = new WindowProperties();
+        public DockProperties Dock { get; } = new DockProperties();
+        public RingProperties Ring { get; } = new RingProperties();
+        public ButtonProperties Button { get; } = new ButtonProperties();
+        public ShortcutProperties Shortcut { get; } = new ShortcutProperties();
         public ObservableCollection<Shortcut> Shortcuts { get; }
 
         public ICommand ChangeVisibility { get; }
@@ -25,6 +25,10 @@ namespace CircleDock.ViewModels
 
         public MainViewModel()
         {
+            Config.Initialize();
+
+            Properties = Config.Properties;
+
             try
             {
                 Shortcuts = new ObservableCollection<Shortcut>(XmlReader.GetShortcuts());

@@ -4,37 +4,71 @@
     {
         public bool EnableRotation
         {
-            get => GetValue<bool>();
-            set => SetValue(value);
+            get => (bool)GetValue();
+            set
+            {
+                if (value == EnableRotation)
+                    return;
+
+                SetValue(value);
+            }
         }
         public double MinimumRadius
         {
-            get => GetValue<double>();
-            set => SetValue(value);
+            get => (double)GetValue();
+            set
+            {
+                if (value == MinimumRadius)
+                    return;
+
+                SetValue(value);
+            }
         }
 
         public double IconsPerCircle
         {
-            get => GetValue<double>();
-            set => SetValue(value);
+            get => (double)GetValue();
+            set
+            {
+                if (value == IconsPerCircle)
+                    return;
+
+                SetValue(value);
+            }
         }
         public double CircleInterval
         {
-            get => GetValue<double>();
-            set => SetValue(value);
+            get => (double)GetValue();
+            set
+            {
+                if (value == CircleInterval)
+                    return;
+
+                SetValue(value);
+            }
         }
         public double RotationStep
         {
-            get => GetValue<double>();
-            set => SetValue(value);
+            get => (double)GetValue();
+            set
+            {
+                if (value == RotationStep)
+                    return;
+
+                SetValue(value);
+            }
         }
         public double Rotation
         {
-            get => GetValue<double>();
-            set => SetValue(value);
-        }
+            get => (double)GetValue();
+            set
+            {
+                if (value == Rotation)
+                    return;
 
-        public DockProperties(string configFile) : base(configFile) { }
+                SetValue(value);
+            }
+        }
 
         public void RotateShortcuts(int delta) => Rotation += RotationStep * delta;
     }
