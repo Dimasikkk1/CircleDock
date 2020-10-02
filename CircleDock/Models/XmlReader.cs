@@ -7,6 +7,7 @@ using System.Xml;
 
 namespace CircleDock.Models
 {
+    // TODO: Нужно упростить этот класс.
     static class XmlReader
     {
         public const string ConfigPath = "Resources/Config.xml";

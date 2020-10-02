@@ -1,5 +1,6 @@
 ﻿using CircleDock.Extensions;
 using CircleDock.Models;
+using Gma.System.MouseKeyHook;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -51,7 +52,7 @@ namespace CircleDock.ViewModels
                 if (e.Button != System.Windows.Forms.MouseButtons.Middle)
                     return;
 
-                Window.ChangeVisibility();
+                ChangeVisibility.Execute(null);
 
                 if (!Window.Visibility)
                     return;

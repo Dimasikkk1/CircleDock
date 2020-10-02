@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Globalization;
 using System.IO;
-using System.Reflection;
 using System.Windows;
 using System.Windows.Media;
-using System.Xml;
 
 namespace CircleDock.Models
 {
+    // TODO: Это какая-то шляпа. Надо что-то сделать с конфигом.
     static class Config
     {
         public const string ConfigPath = "Resources/Config.xml";
@@ -18,7 +17,7 @@ namespace CircleDock.Models
             { typeof(WindowProperties), new ObservableDictionary<string, object>() 
             {
                 { "Visibility", true },
-                { "Width", SystemParameters.PrimaryScreenWidth }, // Надо будет что-то придумать для нескольких дисплеев
+                { "Width", SystemParameters.PrimaryScreenWidth },
                 { "Height", SystemParameters.PrimaryScreenHeight },
                 { "Left", 0d },
                 { "Top", 0d },

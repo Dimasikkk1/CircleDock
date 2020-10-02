@@ -13,6 +13,9 @@ namespace CircleDock
             get => pairs.ContainsKey(key) ? pairs[key] : null;
             set
             {
+                if (pairs[key] == value)
+                    return;
+
                 pairs[key] = value;
 
                 OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Replace, key, key, 0));
@@ -80,6 +83,7 @@ namespace CircleDock
 
         #region INotifyCollectionChanged
         protected virtual void OnCollectionChanged(NotifyCollectionChangedEventArgs e) => CollectionChanged?.Invoke(this, e);
+        
         public event NotifyCollectionChangedEventHandler CollectionChanged;
         #endregion
     }

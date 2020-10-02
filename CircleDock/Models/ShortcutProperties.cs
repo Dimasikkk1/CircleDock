@@ -4,58 +4,28 @@
     {
         public string FolderImage
         {
-            get => (string)GetValue();
-            set
-            {
-                if (value == FolderImage)
-                    return;
-
-                SetValue(value);
-            }
+            get => GetValue<string>();
+            set => SetValue(value);
         }
         public bool ShowWindowsContextMenu
         {
-            get => (bool)GetValue();
-            set
-            {
-                if (value == ShowWindowsContextMenu)
-                    return;
-
-                SetValue(value);
-            }
+            get => GetValue<bool>();
+            set => SetValue(value);
         }
         public double Width
         {
-            get => (double)GetValue();
-            set
-            {
-                if (value == Width)
-                    return;
-
-                SetValue(value);
-            }
+            get => GetValue<double>();
+            set => SetValue(value);
         }
         public double Height
         {
-            get => (double)GetValue();
-            set
-            {
-                if (value == Height)
-                    return;
-
-                SetValue(value);
-            }
+            get => GetValue<double>();
+            set => SetValue(value);
         }
         public double Opacity
         {
-            get => (double)GetValue();
-            set
-            {
-                if (value == Opacity)
-                    return;
-
-                SetValue(value);
-            }
+            get => GetValue<double>();
+            set => SetValue(value);
         }
     }
 }
