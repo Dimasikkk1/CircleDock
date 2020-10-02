@@ -21,8 +21,11 @@ namespace CircleDock.Converters
 
             int index = (int)value[1];
 
-            //return (double)(centerX + (radius + index / iconsPerCircle * circleInterval) * Math.Cos((360f / iconsPerCircle * (index + 1) + actualRotation).ToRadians()) - shortcutWidth / 2);
-            return (double)(centerX - shortcutWidth / 2 + radius * Math.Cos(actualRotation.ToRadians()));
+            radius = radius + index / (int)iconsPerCircle * circleInterval;
+
+            double angle = (360f / iconsPerCircle * (index + 1) + actualRotation).ToRadians();
+
+            return (double)(centerX + radius * Math.Cos(angle) - shortcutWidth / 2);
         }
 
         public object[] ConvertBack(object value, Type[] targetType, object parameter, CultureInfo culture) =>
