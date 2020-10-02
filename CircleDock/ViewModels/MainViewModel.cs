@@ -9,6 +9,7 @@ using System.Windows.Input;
 
 namespace CircleDock.ViewModels
 {
+    // TODO: Наверно лучше отказаться от переноса свойств в отдельные классы
     class MainViewModel
     {
         public ObservableDictionary<Type, ObservableDictionary<string, object>> Properties { get; }

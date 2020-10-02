@@ -7,7 +7,7 @@ using System.Xml;
 
 namespace CircleDock.Models
 {
-    // TODO: Нужно упростить этот класс.
+    // TODO: Нужно удалить этот класс.
     static class XmlReader
     {
         public const string ConfigPath = "Resources/Config.xml";
@@ -103,6 +103,8 @@ namespace CircleDock.Models
 
                 rootElement.AppendChild(shortcutElement);
             }
+
+            shortcutsFile.AppendChild(rootElement);
 
             SaveXml(shortcutsFile, shortcutsPath);
         }
