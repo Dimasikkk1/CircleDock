@@ -34,6 +34,7 @@ namespace CircleDock.ViewModels
             try
             {
                 Shortcuts = new ObservableCollection<Shortcut>(XmlReader.GetShortcuts());
+                Shortcuts.GiveIndexes();
             }
             catch (Exception)
             {
