@@ -7,7 +7,9 @@ namespace CircleDock.Converters
 {
     class HalfDevider : IValueConverter
     {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture) => (double)value / 2;
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) => DependencyProperty.UnsetValue;
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture) =>
+            (double)value / 2;
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) =>
+            DependencyProperty.UnsetValue;
     }
 }

@@ -6,7 +6,7 @@ using System.Windows.Interop;
 
 namespace CircleDock.Views
 {
-    public partial class MainWindow : Window
+    partial class MainWindow : Window
     {
         // Тут код позволяющий окну уходить вверх (Source: https://stackoverflow.com/a/331251)
         // TODO: Из-за этого костыля окно не появляется на месте курсора или по центру экрана.

@@ -22,5 +22,14 @@ namespace CircleDock.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Resources/Config.xml")]
+        public string ConfigPath {
+            get {
+                return ((string)(this["ConfigPath"]));
+            }
+        }
     }
 }

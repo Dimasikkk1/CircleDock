@@ -10,16 +10,16 @@
     xmlns:properties="clr-namespace:CircleDock.Properties"
     x:Name="mainWindow"
     Title="CircleDock"
-    Width="{Binding Window.Width, Mode=TwoWay}"
-    Height="{Binding Window.Height, Mode=TwoWay}"
-    MaxWidth="{Binding Window.Width, Mode=TwoWay}"
-    MaxHeight="{Binding Window.Height, Mode=TwoWay}"
+    Width="{Binding WindowSize.X, Mode=TwoWay}"
+    Height="{Binding WindowSize.Y, Mode=TwoWay}"
+    MaxWidth="{Binding WindowSize.X, Mode=TwoWay}"
+    MaxHeight="{Binding WindowSize.Y, Mode=TwoWay}"
     AllowDrop="True"
     AllowsTransparency="True"
-    Left="{Binding Window.Left, Mode=TwoWay}"
-    Top="{Binding Window.Top, Mode=TwoWay}"
-    Topmost="{Binding Window.Topmost, Mode=TwoWay}"
-    Visibility="{Binding Window.Visibility, Converter={StaticResource BoolToVisibilityConverter}, Mode=TwoWay}"
+    Left="{Binding WindowPosition.X, Mode=TwoWay}"
+    Top="{Binding WindowPosition.Y, Mode=TwoWay}"
+    Topmost="{Binding Topmost, Mode=TwoWay}"
+    Visibility="{Binding Visibility, Converter={StaticResource BoolToVisibilityConverter}, Mode=TwoWay}"
     WindowStartupLocation="Manual"
     WindowStyle="None"
     mc:Ignorable="d">
@@ -27,7 +27,7 @@
     <Window.Resources>
         <commands:DragMainWindowCommand x:Key="DragMainWindowCommand" />
         <commands:CloseMainWindowCommand x:Key="CloseMainWindowCommand" />
-        <commands:ShowSettingsWindowCommand x:Key="OpenSettingsWindowCommand" />
+        <commands:ShowSettingsWindowCommand x:Key="ShowSettingsWindowCommand" />
     </Window.Resources>
 
     <Window.Background>
@@ -53,7 +53,7 @@
     <Window.ContextMenu>
         <ContextMenu>
             <MenuItem Command="{Binding ChangeVisibility}" Header="{x:Static properties:Resources.MainWindow_ContextMenu_Hide}" />
-            <MenuItem Command="{StaticResource OpenSettingsWindowCommand}" Header="{x:Static properties:Resources.MainWindow_ContextMenu_Settings}" />
+            <MenuItem Command="{StaticResource ShowSettingsWindowCommand}" Header="{x:Static properties:Resources.MainWindow_ContextMenu_Settings}" />
             <MenuItem Command="{StaticResource CloseMainWindowCommand}" Header="{x:Static properties:Resources.MainWindow_ContextMenu_Quit}" />
         </ContextMenu>
     </Window.ContextMenu>
@@ -61,36 +61,35 @@
     <Grid>
         <!--  Background Ring  -->
         <Border
-            Width="{Binding Ring.Diameter}"
+            Width="{Binding RingDiameter}"
             Height="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Width, Mode=TwoWay}"
             BorderBrush="{DynamicResource RingBrush}"
-            BorderThickness="{Binding Ring.Thickness}"
+            BorderThickness="{Binding RingThickness}"
             CornerRadius="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ActualWidth, Converter={StaticResource HalfDeviderConverter}, Mode=OneWay}">
 
             <Border.Resources>
-                <SolidColorBrush x:Key="RingBrush" Color="{Binding Ring.Color}" />
+                <SolidColorBrush x:Key="RingBrush" Color="{Binding RingColor}" />
             </Border.Resources>
         </Border>
 
         <!--  Shortcuts  -->
         <controls:CircleDockControl
-            Properties="{Binding Properties}"
-            Rotation="{Binding Dock.Rotation}"
+            Rotation="{Binding Rotation}"
             ShortcutSelectedCommand="{Binding ShortcutSelectedCommand}"
             Shortcuts="{Binding Shortcuts}"
-            ShortcutsHeight="{Binding Shortcut.Height}"
-            ShortcutsWidth="{Binding Shortcut.Width}" />
+            ShortcutsWidth="{Binding ShortcutSize.X}"
+            ShortcutsHeight="{Binding ShortcutSize.Y}"/>
 
         <!--  Central Button  -->
         <Button
-            Width="{Binding Button.Diameter}"
+            Width="{Binding ButtonDiameter}"
             Height="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Width, Mode=TwoWay}"
             Padding="15"
             Background="{DynamicResource ButtonBrush}"
             Command="{Binding ChangeVisibility}">
 
             <Button.Resources>
-                <SolidColorBrush x:Key="ButtonBrush" Color="{Binding Button.Background}" />
+                <SolidColorBrush x:Key="ButtonBrush" Color="{Binding ButtonBackground}" />
             </Button.Resources>
 
             <Button.Template>
@@ -98,8 +97,7 @@
                     <Border
                         Padding="{TemplateBinding Padding}"
                         Background="{TemplateBinding Background}"
-                        CornerRadius="{TemplateBinding Property=ActualWidth,
-                                                       Converter={StaticResource HalfDeviderConverter}}">
+                        CornerRadius="{TemplateBinding Property=ActualWidth, Converter={StaticResource HalfDeviderConverter}}">
 
                         <ContentPresenter Content="{TemplateBinding Content}" />
                     </Border>
@@ -160,7 +158,7 @@
             </Button.Template>
 
             <Button.Content>
-                <Image Source="{Binding Button.Image, Converter={StaticResource StringToImageConverter}}" />
+                <Image Source="{Binding ButtonImage, Converter={StaticResource StringToImageConverter}}" />
             </Button.Content>
         </Button>
     </Grid>

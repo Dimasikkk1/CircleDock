@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace CircleDock
 {
-    public partial class App : Application
+    partial class App : Application
     {
         public readonly DisplayRootRegistry DisplayRootRegistry = new DisplayRootRegistry();
 
@@ -16,15 +16,16 @@ namespace CircleDock
             DisplayRootRegistry.RegisterWindowType<MainViewModel, MainWindow>();
             DisplayRootRegistry.RegisterWindowType<SettingsViewModel, SettingsWindow>();
 
-            Config.Properties[typeof(WindowProperties)].CollectionChanged += (s, e) =>
-            {
-                if (e.NewItems[0].ToString() != "Language")
-                    return;
+            // TODO: Нужно пофиксить локализацию и конфиг
+            //Config.Properties[typeof(WindowProperties)].CollectionChanged += (s, e) =>
+            //{
+            //    if (e.NewItems[0].ToString() != "Language")
+            //        return;
 
-                CultureInfo cultureInfo = new CultureInfo((string)Config.Properties[typeof(WindowProperties)][e.NewItems[0].ToString()]);
-                Thread.CurrentThread.CurrentCulture = cultureInfo;
-                Thread.CurrentThread.CurrentUICulture = cultureInfo;
-            };
+            //    CultureInfo cultureInfo = new CultureInfo((string)Config.Properties[typeof(WindowProperties)][e.NewItems[0].ToString()]);
+            //    Thread.CurrentThread.CurrentCulture = cultureInfo;
+            //    Thread.CurrentThread.CurrentUICulture = cultureInfo;
+            //};
         }
 
         protected override void OnStartup(StartupEventArgs e)

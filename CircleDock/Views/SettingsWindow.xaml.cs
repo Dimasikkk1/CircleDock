@@ -2,7 +2,7 @@
 
 namespace CircleDock.Views
 {
-    public partial class SettingsWindow : Window
+    partial class SettingsWindow : Window
     {
         public SettingsWindow() => InitializeComponent();
     }
