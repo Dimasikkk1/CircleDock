@@ -1,67 +1,99 @@
 ﻿using System;
-using System.Globalization;
-using System.IO;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Media;
+using System.Xml.Linq;
 
 namespace CircleDock.Models
 {
-    // TODO: Это какая-то шляпа. Надо что-то сделать с конфигом.
-    static class Config
+    class Config
     {
-        public const string ConfigPath = "Resources/Config.xml";
-        public const string RootElement = "Config";
+        private const string Root = "Settings";
+        private const string Element = "Setting";
+        private const string Key = "Key";
+        private const string Value = "Value";
 
-        public static ObservableDictionary<Type, ObservableDictionary<string, object>> Properties = new ObservableDictionary<Type, ObservableDictionary<string, object>>()
-        {
-            { typeof(WindowProperties), new ObservableDictionary<string, object>() 
-            {
-                { "Visibility", true },
-                { "Width", SystemParameters.PrimaryScreenWidth },
-                { "Height", SystemParameters.PrimaryScreenHeight },
-                { "Left", 0d },
-                { "Top", 0d },
-                { "Topmost", true },
-                { "HideAfterOpen", false },
-                { "Language", CultureInfo.CurrentCulture.Name } } },
-            { typeof(DockProperties), new ObservableDictionary<string, object>() 
-            {
-                { "EnableRotation", true },
-                { "MinimumRadius", 130d },
-                { "IconsPerCircle", 13d },
-                { "CircleInterval", 50d },
-                { "RotationStep", 30d },
-                { "Rotation", 0d } } },
-            { typeof(RingProperties), new ObservableDictionary<string, object>() 
-            {
-                { "Color", Colors.LightGray },
-                { "Diameter", 200d },
-                { "Thickness", 50d } } },
-            { typeof(ButtonProperties), new ObservableDictionary<string, object>() 
-            {
-                { "Image", "Resources/Icons/Button.png" },
-                { "Diameter", 100d },
-                { "Background", Colors.Azure } } },
-            { typeof(ShortcutProperties), new ObservableDictionary<string, object>()
-            {
-                { "FolderImage", "Resources/Icons/Folder.png" },
-                { "ShowWindowsContextMenu", true },
-                { "Width", 74d },
-                { "Height", 70d },
-                { "Opacity", 1d }
-            } }
-        };
+        private static XDocument configFile;
 
-        public static void Initialize()
+        public string Path { get; }
+        
+        public Config(string configPath)
         {
-            try
-            {
-                XmlReader.LoadConfig();
-            }
-            catch (FileNotFoundException)
-            {
-                XmlReader.SaveConfig();
-            }
+            Path = configPath;
         }
+
+        public void Load() => configFile = XDocument.Load(Path);
+        public void Save() => configFile.Save(Path);
+        public void SaveObject(object configObject)
+        {
+            XDocument configFile = new XDocument();
+            XElement configFileRoot = new XElement(Root);
+
+            var properties = configObject.GetType().GetProperties();
+
+            foreach (var property in properties)
+            {
+                configFileRoot.Add(new XElement(Element,
+                    new XAttribute(Key, property.Name),
+                    new XAttribute(Value, property.GetValue(configObject).ToString())));
+            }
+
+            configFile.Add(configFileRoot);
+            configFile.Save(Path);
+
+            SettingChanged?.Invoke(this, string.Empty);
+        }
+        public T GetSetting<T>(string key)
+        {
+            XAttribute setting = FindAttribute(configFile, key);
+
+            if (string.IsNullOrEmpty(setting.Value))
+                throw new KeyNotFoundException();
+
+            return (T)Parse(setting.Value);
+        }
+        public void SetSetting(string key, object value)
+        {
+            XAttribute setting = FindAttribute(configFile, key);
+
+            if (setting.Value == value.ToString())
+                return;
+
+            setting.Value = value.ToString();
+
+            SettingChanged?.Invoke(this, key);
+        }
+
+        private static XAttribute FindAttribute(XDocument configFile, string key)
+        {
+            return configFile.Element(Root)
+                             .Elements(Element)
+                             .FirstOrDefault(element => element.Attribute(Key).Value == key)
+                             .Attribute(Value);
+        }
+        private static object Parse(string value)
+        {
+            object result = null;
+
+            if (double.TryParse(value, out double doubleResult))
+                result = doubleResult;
+
+            if (bool.TryParse(value, out bool boolResult))
+                result = boolResult;
+
+            if (value[0] == '#')
+                result = (Color)ColorConverter.ConvertFromString(value);
+
+            // TODO: Почему-то Vector.ToString() не подходит для парсинга (истоки в методе SaveObject)
+            if (value.IndexOf(';') != -1)
+                result = Vector.Parse(value.Replace(';', ','));
+
+            result = result ?? value;
+
+            return result;
+        }
+
+        public static event EventHandler<string> SettingChanged;
     }
 }

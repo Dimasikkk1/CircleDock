@@ -9,15 +9,8 @@ using System.Windows.Input;
 
 namespace CircleDock.ViewModels
 {
-    // TODO: Наверно лучше отказаться от переноса свойств в отдельные классы
-    class MainViewModel
+    class MainViewModel : BaseViewModel
     {
-        public ObservableDictionary<Type, ObservableDictionary<string, object>> Properties { get; }
-        public WindowProperties Window { get; } = new WindowProperties();
-        public DockProperties Dock { get; } = new DockProperties();
-        public RingProperties Ring { get; } = new RingProperties();
-        public ButtonProperties Button { get; } = new ButtonProperties();
-        public ShortcutProperties Shortcut { get; } = new ShortcutProperties();
         public ObservableCollection<Shortcut> Shortcuts { get; }
 
         public ICommand ChangeVisibility { get; }
@@ -27,10 +20,6 @@ namespace CircleDock.ViewModels
 
         public MainViewModel()
         {
-            Config.Initialize();
-
-            Properties = Config.Properties;
-
             try
             {
                 Shortcuts = new ObservableCollection<Shortcut>(XmlReader.GetShortcuts());
@@ -43,8 +32,8 @@ namespace CircleDock.ViewModels
 
             Shortcuts.CollectionChanged += (s, _) => XmlReader.SaveShortcuts((IEnumerable<Shortcut>)s);
 
-            ChangeVisibility = new DelegateCommand<EventArgs>(_ => Window.ChangeVisibility());
-            MouseWheel = new DelegateCommand<MouseWheelEventArgs>(e => Dock.RotateShortcuts(-e.Delta / 120));
+            ChangeVisibility = new DelegateCommand<EventArgs>(_ => Visibility = !Visibility);
+            MouseWheel = new DelegateCommand<MouseWheelEventArgs>(e => RotateShortcuts(-e.Delta / 120));
             DragEnter = new DelegateCommand<DragEventArgs>(e => e.Effects = e.Data.IsFile() ? DragDropEffects.Copy : DragDropEffects.None);
             Drop = new DelegateCommand<DragEventArgs>(e => Shortcuts.AddFiles(e.Data), e => e.Data.IsFile());
 
@@ -64,5 +53,7 @@ namespace CircleDock.ViewModels
             };
 #endif
         }
+
+        private void RotateShortcuts(int delta) => Rotation += RotationStep * delta;
     }
 }

@@ -93,7 +93,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Commands\ChangePropertiesCommand.cs" />
     <Compile Include="Commands\CloseMainWindowCommand.cs" />
     <Compile Include="Commands\DragMainWindowCommand.cs" />
     <Compile Include="Commands\HideSettingsWindowCommand.cs" />
@@ -115,7 +114,6 @@
     <Compile Include="Extensions\StringExtension.cs" />
     <Compile Include="Models\Shortcut.cs" />
     <Compile Include="Models\XmlReader.cs" />
-    <Compile Include="PropertiesConverter.cs" />
     <Compile Include="Properties\Resources.ru-RU.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -126,6 +124,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="Views\SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
@@ -143,14 +142,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DisplayRootRegistry.cs" />
-    <Compile Include="Models\ButtonProperties.cs" />
     <Compile Include="Models\Config.cs" />
     <Compile Include="DelegateCommand.cs" />
-    <Compile Include="Models\DockProperties.cs" />
-    <Compile Include="Models\Property.cs" />
-    <Compile Include="Models\RingProperties.cs" />
-    <Compile Include="Models\ShortcutProperties.cs" />
-    <Compile Include="Models\WindowProperties.cs" />
     <Compile Include="ObservableDictionary.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">

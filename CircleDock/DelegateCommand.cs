@@ -3,7 +3,7 @@ using System.Windows.Input;
 
 namespace CircleDock
 {
-    public class DelegateCommand<T> : ICommand
+    class DelegateCommand<T> : ICommand
     {
         private bool canExecute;
 
@@ -18,7 +18,8 @@ namespace CircleDock
             CanExecuteFunc = canExecuteFunc;
         }
 
-        public bool CanExecute(object parameter) => Action != null && CanExecuteFunc != null && CanExecuteFunc((T)parameter);
+        public bool CanExecute(object parameter) => 
+            Action != null && CanExecuteFunc != null && CanExecuteFunc((T)parameter);
         public void Execute(object parameter)
         {
             Action?.Invoke((T)parameter);

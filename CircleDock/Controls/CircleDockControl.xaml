@@ -11,10 +11,6 @@
     d:DesignWidth="1280"
     mc:Ignorable="d">
 
-    <UserControl.Resources>
-        <commands:ChangePropertiesCommand x:Key="ChangePropertiesCommand" />
-    </UserControl.Resources>
-
     <!--  UserControl Triggers  -->
     <i:Interaction.Triggers>
         <i:PropertyChangedTrigger Binding="{Binding ElementName=circleDock, Path=Rotation}">
@@ -30,12 +26,6 @@
                     </Storyboard>
                 </i:ControlStoryboardAction.Storyboard>
             </i:ControlStoryboardAction>
-        </i:PropertyChangedTrigger>
-        <i:PropertyChangedTrigger Binding="{Binding ElementName=circleDock, Path=Properties}">
-            <i:InvokeCommandAction
-                Command="{StaticResource ChangePropertiesCommand}"
-                CommandParameter="{Binding ElementName=circleDock}"
-                PassEventArgsToCommand="True" />
         </i:PropertyChangedTrigger>
     </i:Interaction.Triggers>
 

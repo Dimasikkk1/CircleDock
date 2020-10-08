@@ -12,7 +12,8 @@ namespace CircleDock.Extensions
     {
         public static string ToRelative(this string path) => Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), path);
         public static bool IsDirectory(this string path) => File.GetAttributes(path).HasFlag(FileAttributes.Directory);
-        // Выглядит забавно
+        
+        // TODO: Не знаю, оставить так или сделать как-то по-другому
         public static ImageSource GetIcon(this string path)
         {
             Icon icon = Icon.ExtractAssociatedIcon(path);

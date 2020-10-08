@@ -45,14 +45,14 @@
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top"
                             Content="{x:Static properties:Resources.SettingsWindow_Topmost}"
-                            IsChecked="{Binding Window.Topmost, Mode=TwoWay}" />
+                            IsChecked="{Binding Topmost, Mode=TwoWay}" />
 
                         <CheckBox
                             Margin="{StaticResource TabItemControlMargin}"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top"
                             Content="{x:Static properties:Resources.SettingsWindow_HideAfterOpen}"
-                            IsChecked="{Binding Window.HideAfterOpen, Mode=TwoWay}" />
+                            IsChecked="{Binding HideAfterOpen, Mode=TwoWay}" />
 
                         <ComboBox Margin="{StaticResource TabItemControlMargin}" SelectedItem="{Binding Window.Language, Mode=TwoWay}">
                             <ComboBox.ItemsSource>
@@ -74,7 +74,7 @@
                         <CheckBox
                             Margin="{StaticResource TabItemControlMargin}"
                             Content="{x:Static properties:Resources.SettingsWindow_EnableRotation}"
-                            IsChecked="{Binding Dock.EnableRotation}" />
+                            IsChecked="{Binding EnableRotation}" />
 
                         <DockPanel Margin="{StaticResource TabItemControlMargin}">
 
@@ -84,7 +84,7 @@
                                 VerticalAlignment="Center"
                                 VerticalContentAlignment="Center"
                                 DockPanel.Dock="Right"
-                                Text="{Binding Dock.MinimumRadius, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                                Text="{Binding Radius, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
                         </DockPanel>
                         <DockPanel Margin="{StaticResource TabItemControlMargin}">
 
@@ -94,7 +94,7 @@
                                 VerticalAlignment="Center"
                                 VerticalContentAlignment="Center"
                                 DockPanel.Dock="Right"
-                                Text="{Binding Dock.IconsPerCircle, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                                Text="{Binding IconsPerCircle, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
                         </DockPanel>
                         <DockPanel Margin="{StaticResource TabItemControlMargin}">
 
@@ -104,7 +104,7 @@
                                 VerticalAlignment="Center"
                                 VerticalContentAlignment="Center"
                                 DockPanel.Dock="Right"
-                                Text="{Binding Dock.CircleInterval, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                                Text="{Binding CircleInterval, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
                         </DockPanel>
                         <DockPanel Margin="{StaticResource TabItemControlMargin}">
 
@@ -114,7 +114,7 @@
                                 VerticalAlignment="Center"
                                 VerticalContentAlignment="Center"
                                 DockPanel.Dock="Right"
-                                Text="{Binding Dock.RotationStep, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                                Text="{Binding RotationStep, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
                         </DockPanel>
                     </StackPanel>
                 </ScrollViewer>
@@ -139,7 +139,7 @@
                                 VerticalAlignment="Center"
                                 VerticalContentAlignment="Center"
                                 DockPanel.Dock="Right"
-                                Text="{Binding Ring.Diameter, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                                Text="{Binding RingDiameter, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
                         </DockPanel>
                         <DockPanel Margin="{StaticResource TabItemControlMargin}">
 
@@ -149,7 +149,7 @@
                                 VerticalAlignment="Center"
                                 VerticalContentAlignment="Center"
                                 DockPanel.Dock="Right"
-                                Text="{Binding Ring.Thickness, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                                Text="{Binding RingThickness, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
                         </DockPanel>
                     </StackPanel>
                 </ScrollViewer>
@@ -168,7 +168,7 @@
                                 VerticalAlignment="Center"
                                 VerticalContentAlignment="Center"
                                 DockPanel.Dock="Right"
-                                Text="{Binding Button.Image, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                                Text="{Binding ButtonImage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
                         </DockPanel>
                         <DockPanel Margin="{StaticResource TabItemControlMargin}">
 
@@ -178,7 +178,7 @@
                                 VerticalAlignment="Center"
                                 VerticalContentAlignment="Center"
                                 DockPanel.Dock="Right"
-                                Text="{Binding Button.Diameter, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                                Text="{Binding ButtonDiameter, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
                         </DockPanel>
                         <DockPanel Margin="{StaticResource TabItemControlMargin}">
 
@@ -203,7 +203,7 @@
                                 VerticalAlignment="Center"
                                 VerticalContentAlignment="Center"
                                 DockPanel.Dock="Right"
-                                Text="{Binding Shortcut.FolderImage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                                Text="{Binding FolderImage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
                         </DockPanel>
 
                         <CheckBox
@@ -211,7 +211,7 @@
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top"
                             Content="{x:Static properties:Resources.SettingsWindow_ShowWindowContextMenu}"
-                            IsChecked="{Binding Shortcut.ShowWindowsContextMenu, Mode=TwoWay}" />
+                            IsChecked="{Binding ShowWindowsContextMenu, Mode=TwoWay}" />
 
                         <DockPanel Margin="{StaticResource TabItemControlMargin}">
 
@@ -221,7 +221,7 @@
                                 VerticalAlignment="Center"
                                 VerticalContentAlignment="Center"
                                 DockPanel.Dock="Right"
-                                Text="{Binding Shortcut.Width, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                                Text="{Binding ShortcutSize.X, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
                         </DockPanel>
                         <DockPanel Margin="{StaticResource TabItemControlMargin}">
 
@@ -231,7 +231,7 @@
                                 VerticalAlignment="Center"
                                 VerticalContentAlignment="Center"
                                 DockPanel.Dock="Right"
-                                Text="{Binding Shortcut.Height, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                                Text="{Binding ShortcutSize.Y, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
                         </DockPanel>
                         <DockPanel Margin="{StaticResource TabItemControlMargin}">
 
@@ -243,7 +243,7 @@
                                 Maximum="1"
                                 Minimum="0"
                                 SmallChange="0.1"
-                                Value="{Binding Shortcut.Opacity, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                                Value="{Binding ShortcutOpacity, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
                         </DockPanel>
                     </StackPanel>
                 </ScrollViewer>
