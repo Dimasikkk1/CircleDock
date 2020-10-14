@@ -28,6 +28,7 @@
         <commands:DragMainWindowCommand x:Key="DragMainWindowCommand" />
         <commands:CloseMainWindowCommand x:Key="CloseMainWindowCommand" />
         <commands:ShowSettingsWindowCommand x:Key="ShowSettingsWindowCommand" />
+        <commands:ShortcutSelectedCommand x:Key="ShortcutSelectedCommand" />
     </Window.Resources>
 
     <Window.Background>
@@ -75,7 +76,7 @@
         <!--  Shortcuts  -->
         <controls:CircleDockControl
             Rotation="{Binding Rotation}"
-            ShortcutSelectedCommand="{Binding ShortcutSelectedCommand}"
+            ShortcutSelectedCommand="{StaticResource ShortcutSelectedCommand}"
             Shortcuts="{Binding Shortcuts}"
             ShortcutsWidth="{Binding ShortcutSize.X}"
             ShortcutsHeight="{Binding ShortcutSize.Y}"/>

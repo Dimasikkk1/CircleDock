@@ -96,6 +96,7 @@
     <Compile Include="Commands\CloseMainWindowCommand.cs" />
     <Compile Include="Commands\DragMainWindowCommand.cs" />
     <Compile Include="Commands\HideSettingsWindowCommand.cs" />
+    <Compile Include="Commands\ShortcutSelectedCommand.cs" />
     <Compile Include="Commands\ShowSettingsWindowCommand.cs" />
     <Compile Include="Controls\CircleDockControl.xaml.cs">
       <DependentUpon>CircleDockControl.xaml</DependentUpon>
