@@ -45,11 +45,10 @@ namespace CircleDock.ViewModels
 
                 ChangeVisibility.Execute(null);
 
-                if (!Window.Visibility)
+                if (!Visibility)
                     return;
 
-                Window.Left = e.X - Window.Width / 2;
-                Window.Top = e.Y - Window.Height / 2;
+                WindowPosition = new Vector(e.X - WindowSize.X / 2, e.Y - WindowSize.Y / 2);
             };
 #endif
         }

@@ -145,7 +145,6 @@
     <Compile Include="DisplayRootRegistry.cs" />
     <Compile Include="Models\Config.cs" />
     <Compile Include="DelegateCommand.cs" />
-    <Compile Include="ObservableDictionary.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
