@@ -54,6 +54,12 @@ namespace CircleDock.ViewModels
 #endif
         }
 
-        private void RotateShortcuts(int delta) => Rotation += RotationStep * delta;
+        private void RotateShortcuts(int delta)
+        {
+            if (!config.GetSetting<bool>("EnableRotation"))
+                return;
+
+            Rotation += RotationStep * delta;
+        }
     }
 }

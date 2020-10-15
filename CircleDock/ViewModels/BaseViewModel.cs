@@ -40,7 +40,8 @@ namespace CircleDock.ViewModels
             ShortcutSize = new Vector(74, 70),
             ShortcutOpacity = 1
         };
-        private readonly Config config;
+
+        protected readonly Config config;
 
         #region Window Properties
         public Vector WindowSize

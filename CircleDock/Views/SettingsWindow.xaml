@@ -12,6 +12,8 @@
     Title="{x:Static properties:Resources.SettingsWindow}"
     Width="500"
     Height="300"
+    MinWidth="500"
+    MinHeight="300"
     mc:Ignorable="d">
 
     <Window.Resources>
@@ -34,12 +36,15 @@
         </Grid.RowDefinitions>
 
         <TabControl Grid.Row="0" TabStripPlacement="Left">
+
+            <!--  Настройки окна  -->
             <TabItem Width="{StaticResource TabItemWidth}" Header="{x:Static properties:Resources.SettingsWindow_TabItem_Window}">
 
                 <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
 
                     <StackPanel Margin="{StaticResource TabItemPadding}">
 
+                        <!--  Поверх всех окон  -->
                         <CheckBox
                             Margin="{StaticResource TabItemControlMargin}"
                             HorizontalAlignment="Left"
@@ -47,6 +52,7 @@
                             Content="{x:Static properties:Resources.SettingsWindow_Topmost}"
                             IsChecked="{Binding Topmost, Mode=TwoWay}" />
 
+                        <!--  Скрыть после открытия  -->
                         <CheckBox
                             Margin="{StaticResource TabItemControlMargin}"
                             HorizontalAlignment="Left"
@@ -54,28 +60,37 @@
                             Content="{x:Static properties:Resources.SettingsWindow_HideAfterOpen}"
                             IsChecked="{Binding HideAfterOpen, Mode=TwoWay}" />
 
-                        <ComboBox Margin="{StaticResource TabItemControlMargin}" SelectedItem="{Binding Window.Language, Mode=TwoWay}">
-                            <ComboBox.ItemsSource>
-                                <CompositeCollection>
-                                    <system:String>en-US</system:String>
-                                    <system:String>ru-RU</system:String>
-                                </CompositeCollection>
-                            </ComboBox.ItemsSource>
-                        </ComboBox>
+                        <!--  Язык  -->
+                        <DockPanel Margin="{StaticResource TabItemControlMargin}">
+                            <Label Content="{x:Static properties:Resources.SettingsWindow_Language}" DockPanel.Dock="Left" />
+
+                            <ComboBox Margin="{StaticResource TabItemControlMargin}" SelectedItem="{Binding Language, Mode=TwoWay}">
+                                <ComboBox.ItemsSource>
+                                    <CompositeCollection>
+                                        <system:String>en-US</system:String>
+                                        <system:String>ru-RU</system:String>
+                                    </CompositeCollection>
+                                </ComboBox.ItemsSource>
+                            </ComboBox>
+                        </DockPanel>
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>
+
+            <!--  Настройки панели  -->
             <TabItem Width="{StaticResource TabItemWidth}" Header="{x:Static properties:Resources.SettingsWindow_TabItem_Dock}">
 
                 <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
 
                     <StackPanel Margin="{StaticResource TabItemPadding}">
 
+                        <!--  Включить вращение  -->
                         <CheckBox
                             Margin="{StaticResource TabItemControlMargin}"
                             Content="{x:Static properties:Resources.SettingsWindow_EnableRotation}"
                             IsChecked="{Binding EnableRotation}" />
 
+                        <!--  Минимальный радиус  -->
                         <DockPanel Margin="{StaticResource TabItemControlMargin}">
 
                             <Label Content="{x:Static properties:Resources.SettingsWindow_MinimumRadius}" DockPanel.Dock="Left" />
@@ -86,6 +101,8 @@
                                 DockPanel.Dock="Right"
                                 Text="{Binding Radius, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
                         </DockPanel>
+
+                        <!--  Ярлыков на окружности  -->
                         <DockPanel Margin="{StaticResource TabItemControlMargin}">
 
                             <Label Content="{x:Static properties:Resources.SettingsWindow_IconsPerCircle}" DockPanel.Dock="Left" />
@@ -94,8 +111,10 @@
                                 VerticalAlignment="Center"
                                 VerticalContentAlignment="Center"
                                 DockPanel.Dock="Right"
-                                Text="{Binding IconsPerCircle, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                                Text="{Binding ShortcutsPerCircle, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
                         </DockPanel>
+
+                        <!--  Интервал между окружностями  -->
                         <DockPanel Margin="{StaticResource TabItemControlMargin}">
 
                             <Label Content="{x:Static properties:Resources.SettingsWindow_CircleInterval}" DockPanel.Dock="Left" />
@@ -106,6 +125,8 @@
                                 DockPanel.Dock="Right"
                                 Text="{Binding CircleInterval, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
                         </DockPanel>
+
+                        <!--  Шаг вращения  -->
                         <DockPanel Margin="{StaticResource TabItemControlMargin}">
 
                             <Label Content="{x:Static properties:Resources.SettingsWindow_RotationStep}" DockPanel.Dock="Left" />
@@ -119,18 +140,23 @@
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>
+
+            <!--  Настройки кольца  -->
             <TabItem Width="{StaticResource TabItemWidth}" Header="{x:Static properties:Resources.SettingsWindow_TabItem_Ring}">
 
                 <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
 
                     <StackPanel Margin="{StaticResource TabItemPadding}">
 
+                        <!--  Цвет  -->
                         <DockPanel Margin="{StaticResource TabItemControlMargin}">
 
                             <Label Content="{x:Static properties:Resources.SettingsWindow_Color}" DockPanel.Dock="Left" />
 
-                            <xctk:ColorPicker DockPanel.Dock="Right" SelectedColor="{Binding Ring.Color, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                            <xctk:ColorPicker DockPanel.Dock="Right" SelectedColor="{Binding RingColor, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
                         </DockPanel>
+
+                        <!--  Диаметр  -->
                         <DockPanel Margin="{StaticResource TabItemControlMargin}">
 
                             <Label Content="{x:Static properties:Resources.SettingsWindow_Diameter}" DockPanel.Dock="Left" />
@@ -141,6 +167,8 @@
                                 DockPanel.Dock="Right"
                                 Text="{Binding RingDiameter, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
                         </DockPanel>
+
+                        <!--  Толщина  -->
                         <DockPanel Margin="{StaticResource TabItemControlMargin}">
 
                             <Label Content="{x:Static properties:Resources.SettingsWindow_Thickness}" DockPanel.Dock="Left" />
@@ -154,12 +182,15 @@
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>
+
+            <!--  Настройки кнопки  -->
             <TabItem Width="{StaticResource TabItemWidth}" Header="{x:Static properties:Resources.SettingsWindow_TabItem_Button}">
 
                 <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
 
                     <StackPanel Margin="{StaticResource TabItemPadding}">
 
+                        <!--  Изображение  -->
                         <DockPanel Margin="{StaticResource TabItemControlMargin}">
 
                             <Label Content="{x:Static properties:Resources.SettingsWindow_Image}" DockPanel.Dock="Left" />
@@ -170,6 +201,8 @@
                                 DockPanel.Dock="Right"
                                 Text="{Binding ButtonImage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
                         </DockPanel>
+
+                        <!--  Диаметр  -->
                         <DockPanel Margin="{StaticResource TabItemControlMargin}">
 
                             <Label Content="{x:Static properties:Resources.SettingsWindow_Diameter}" DockPanel.Dock="Left" />
@@ -180,21 +213,26 @@
                                 DockPanel.Dock="Right"
                                 Text="{Binding ButtonDiameter, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
                         </DockPanel>
+
+                        <!--  Фон  -->
                         <DockPanel Margin="{StaticResource TabItemControlMargin}">
 
                             <Label Content="{x:Static properties:Resources.SettingsWindow_Background}" DockPanel.Dock="Left" />
 
-                            <xctk:ColorPicker DockPanel.Dock="Right" SelectedColor="{Binding Button.Background, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                            <xctk:ColorPicker DockPanel.Dock="Right" SelectedColor="{Binding ButtonBackground, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
                         </DockPanel>
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>
+
+            <!--  Настройки ярлыков  -->
             <TabItem Width="{StaticResource TabItemWidth}" Header="{x:Static properties:Resources.SettingsWindow_TabItem_Shortcut}">
 
                 <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
 
                     <StackPanel Margin="{StaticResource TabItemPadding}">
 
+                        <!--  Изображение папки  -->
                         <DockPanel Margin="{StaticResource TabItemControlMargin}">
 
                             <Label Content="{x:Static properties:Resources.SettingsWindow_FolderImage}" DockPanel.Dock="Left" />
@@ -206,6 +244,7 @@
                                 Text="{Binding FolderImage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
                         </DockPanel>
 
+                        <!--  Показывать котекстное меню Windows  -->
                         <CheckBox
                             Margin="{StaticResource TabItemControlMargin}"
                             HorizontalAlignment="Left"
@@ -213,6 +252,7 @@
                             Content="{x:Static properties:Resources.SettingsWindow_ShowWindowContextMenu}"
                             IsChecked="{Binding ShowWindowsContextMenu, Mode=TwoWay}" />
 
+                        <!--  Ширина  -->
                         <DockPanel Margin="{StaticResource TabItemControlMargin}">
 
                             <Label Content="{x:Static properties:Resources.SettingsWindow_Width}" DockPanel.Dock="Left" />
@@ -223,6 +263,8 @@
                                 DockPanel.Dock="Right"
                                 Text="{Binding ShortcutSize.X, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
                         </DockPanel>
+
+                        <!--  Высота  -->
                         <DockPanel Margin="{StaticResource TabItemControlMargin}">
 
                             <Label Content="{x:Static properties:Resources.SettingsWindow_Height}" DockPanel.Dock="Left" />
@@ -233,6 +275,8 @@
                                 DockPanel.Dock="Right"
                                 Text="{Binding ShortcutSize.Y, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
                         </DockPanel>
+
+                        <!--  Прозрачность  -->
                         <DockPanel Margin="{StaticResource TabItemControlMargin}">
 
                             <Label Content="{x:Static properties:Resources.SettingsWindow_Opacity}" DockPanel.Dock="Left" />
@@ -249,6 +293,8 @@
                 </ScrollViewer>
             </TabItem>
         </TabControl>
+
+        <!--  Кнопка сохранить  -->
         <Button
             Grid.Row="1"
             HorizontalAlignment="Right"

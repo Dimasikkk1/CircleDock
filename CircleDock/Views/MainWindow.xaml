@@ -78,8 +78,8 @@
             Rotation="{Binding Rotation}"
             ShortcutSelectedCommand="{StaticResource ShortcutSelectedCommand}"
             Shortcuts="{Binding Shortcuts}"
-            ShortcutsWidth="{Binding ShortcutSize.X}"
-            ShortcutsHeight="{Binding ShortcutSize.Y}"/>
+            ShortcutsHeight="{Binding ShortcutSize.Y}"
+            ShortcutsWidth="{Binding ShortcutSize.X}" />
 
         <!--  Central Button  -->
         <Button
@@ -98,7 +98,8 @@
                     <Border
                         Padding="{TemplateBinding Padding}"
                         Background="{TemplateBinding Background}"
-                        CornerRadius="{TemplateBinding Property=ActualWidth, Converter={StaticResource HalfDeviderConverter}}">
+                        CornerRadius="{TemplateBinding Property=ActualWidth,
+                                                       Converter={StaticResource HalfDeviderConverter}}">
 
                         <ContentPresenter Content="{TemplateBinding Content}" />
                     </Border>
