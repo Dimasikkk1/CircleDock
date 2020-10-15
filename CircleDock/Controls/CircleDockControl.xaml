@@ -72,6 +72,7 @@
 
                     <Setter Property="Width" Value="{Binding ElementName=circleDock, Path=ShortcutsWidth}" />
                     <Setter Property="Height" Value="{Binding ElementName=circleDock, Path=ShortcutsHeight}" />
+                    <Setter Property="Opacity" Value="{Binding ElementName=circleDock, Path=ShortcutsOpacity}" />
 
                     <Setter Property="BorderThickness" Value="{Binding ElementName=circleDock, Path=ShortcutsBorderThickness}" />
 

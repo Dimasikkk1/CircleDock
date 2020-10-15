@@ -43,6 +43,18 @@ namespace CircleDock.Controls
                 typeof(double),
                 typeof(CircleDockControl), 
                 new PropertyMetadata(0d));
+        
+        public double ShortcutsOpacity
+        {
+            get { return (double)GetValue(ShortcutsOpacityProperty); }
+            set { SetValue(ShortcutsOpacityProperty, value); }
+        }
+        public static readonly DependencyProperty ShortcutsOpacityProperty =
+            DependencyProperty.Register(
+                "ShortcutsOpacity", 
+                typeof(double),
+                typeof(CircleDockControl), 
+                new PropertyMetadata(1d));
 
         public double ShortcutsBorderThickness
         {

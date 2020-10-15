@@ -79,6 +79,7 @@
             ShortcutSelectedCommand="{StaticResource ShortcutSelectedCommand}"
             Shortcuts="{Binding Shortcuts}"
             ShortcutsHeight="{Binding ShortcutSize.Y}"
+            ShortcutsOpacity="{Binding ShortcutOpacity}"
             ShortcutsWidth="{Binding ShortcutSize.X}" />
 
         <!--  Central Button  -->
